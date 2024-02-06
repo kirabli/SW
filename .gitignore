@@ -1,0 +1,14 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# IDEs and editors
+.vs/
+obj/
+bin/
+Api/src/StartWay.Web.Host/App_Data/Logs/
+Api/src/StartWay.Web.Mvc/App_Data/Logs/
+Api/src/StartWay.Migrator/Logs/Logs.txt
+Api/build/outputs/
+Api/docker/mvc/Mvc-Logs/
+
+
+View/node_modules/
