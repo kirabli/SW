@@ -1,0 +1,61 @@
+//https://github.com/ElemeFE/element/issues/12951
+$sideBarWidth: 210px;
+
+
+
+
+
+
+//-------------theme default-----------------------
+$menuText:#000000;
+$menuActiveText:#2f6dac;//任意菜单激活后的文字色彩
+$subMenuActiveText:#2f6dac;//子菜单激活后的父级菜单的文字色彩
+
+$barBg:#f1f9cf;//菜单主体背景
+$menuBg:#f7f0db;//单级菜单或子菜单
+$menuHover:#fffba8;
+
+$subMenuBg:#f7f0db;//带子菜单的父级菜单
+$subMenuHover:#f7f0db;
+
+$menuActiveBg:rgb(255, 255, 104);
+//----------------theme1--------------------
+$menuText1:white;
+$menuActiveText1:white;//任意菜单激活后的文字色彩
+$subMenuActiveText1:white;//子菜单激活后的父级菜单的文字色彩
+
+$barBg1:#58699f;//菜单主体背景
+$menuBg1:#202252;//单级菜单或子菜单
+$menuHover1:#7a7ee7;;
+
+$subMenuBg1:#202252;//带子菜单的父级菜单
+$subMenuHover1:#7a7ee7;;
+
+$menuActiveBg1:#000c81;
+//----------------theme2--------------------
+$menuText2:white;
+$menuActiveText2:white;//任意菜单激活后的文字色彩
+$subMenuActiveText2:white;//子菜单激活后的父级菜单的文字色彩
+
+$barBg2:#b0ffb9;//菜单主体背景
+$menuBg2:#202252;//单级菜单或子菜单
+$menuHover2:#7a7ee7;;
+
+$subMenuBg2:#202252;//带子菜单的父级菜单
+$subMenuHover2:#7a7ee7;;
+
+$menuActiveBg2:#000c81;
+
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  barBg: $barBg;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+}

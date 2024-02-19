@@ -1,5 +1,6 @@
 
 export default{
+	// https://blog.csdn.net/lq313131/article/details/127091684
 	install(Vue){
 		var validatenull = function(val){
 			if (typeof val === 'boolean') {

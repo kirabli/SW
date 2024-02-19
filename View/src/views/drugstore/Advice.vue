@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h2>
-      我是Advice页面...
-    </h2>
+  <div class="main">
+    <el-scrollbar>
+      。。。要滚动的内容
+    </el-scrollbar>
   </div>
 </template>
 
@@ -18,3 +18,5 @@ export default {
   },
 }
 </script>
+<style >
+</style>

@@ -26,4 +26,12 @@ export default {
 * {
   box-sizing: border-box;
 }
+.el-scrollbar {
+  height: 100%;
+}
+.el-scrollbar__wrap {
+  /* height: 100%; */
+  overflow: scroll;
+  overflow-x: auto;
+}
 </style>

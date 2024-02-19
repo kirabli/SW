@@ -1,0 +1,83 @@
+@import './variables.scss';
+@mixin barBg(){/*通过该函数设置主题颜色，后期方便统一管理；*/
+  background-color:$barBg;
+  [data-theme="theme1"] & {
+    background-color:$barBg1;
+  }
+  [data-theme="theme2"] & {
+    background-color:$barBg2;
+  }
+}
+@mixin menuBg(){/*通过该函数设置主题颜色，后期方便统一管理；*/
+  background-color:$menuBg;
+  [data-theme="theme1"] & {
+    background-color:$menuBg1;
+  }
+  [data-theme="theme2"] & {
+    background-color:$menuBg2;
+  }
+}
+@mixin subMenuBg(){
+  background-color:$subMenuBg;
+  [data-theme="theme1"] & {
+    background-color:$subMenuBg1;
+  }
+  [data-theme="theme2"] & {
+    background-color:$subMenuBg2;
+  }
+}
+
+@mixin menuActiveBg(){
+	background-color:$menuActiveBg !important;
+  [data-theme="theme1"] & {
+    background-color:$menuActiveBg1 !important;
+  }
+  [data-theme="theme2"] & {
+    background-color:$menuActiveBg2 !important;
+  }
+}
+@mixin menuHover(){
+	background-color:$menuHover;
+  [data-theme="theme1"] & {
+    background-color:$menuHover1;
+  }
+  [data-theme="theme2"] & {
+    background-color:$menuHover2;
+  }
+}
+@mixin subMenuHover(){
+	background-color:$subMenuHover;
+  [data-theme="theme1"] & {
+    background-color:$subMenuHover1;
+  }
+  [data-theme="theme2"] & {
+    background-color:$subMenuHover2;
+  }
+}
+@mixin menuText(){
+	color:$menuText;
+  [data-theme="theme1"] & {
+    color:$menuText1;
+  }
+  [data-theme="theme2"] & {
+		color:$menuText2;
+  }
+}
+@mixin menuActiveText(){
+	color:$menuActiveText;
+  [data-theme="theme1"] & {
+    color:$menuActiveText1;
+  }
+  [data-theme="theme2"] & {
+		color:$menuActiveText2;
+  }
+}
+@mixin subMenuActiveText(){
+	color:$subMenuActiveText  !important;
+  [data-theme="theme1"] & {
+    color:$subMenuActiveText1  !important;
+  }
+  [data-theme="theme2"] & {
+		color:$subMenuActiveText2;
+  }
+}

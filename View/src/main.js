@@ -6,7 +6,7 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import GlobalFun from '@/utils/GlobalFun.js'
-import '@/style/sidebar.css' // global css
+import '@/style/index.scss' // global css
 Vue.use(ElementUI);
 Vue.use(GlobalFun);
 new Vue({
