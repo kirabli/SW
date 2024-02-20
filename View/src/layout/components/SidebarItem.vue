@@ -19,7 +19,8 @@
           <item :icon="child.meta.icon||(child.meta&&child.meta.icon)" :title="child.meta.title" />
         </el-menu-item>
       </app-link> -->
-      <SidebarItem v-for="child in item.children" :key="child.path" :is-nest="true" :item="child" :base-path="resolvePath(child.path)" class="nest-menu" />
+      <SidebarItem v-for="child in item.children" :key="child.path" :is-nest="true" :item="child"
+                   :base-path="resolvePath(child.path)" class="nest-menu" />
     </el-submenu>
   </div>
 </template>
@@ -65,7 +66,7 @@ export default {
       return routePathNew
     },
     hasOneShowingChild(children = [], parent) {
-      console.log('hasOneShowingChild', children, parent)
+      // console.log('hasOneShowingChild', children, parent)
       const showingChildren = children.filter((item) => {
         if (item.hidden) {
           return false
@@ -75,7 +76,7 @@ export default {
           return true
         }
       })
-      console.log(this.onlyOneChild, showingChildren)
+      // console.log(this.onlyOneChild, showingChildren)
       // 是否只用一个的时候自动隐藏
       // if (showingChildren.length === 1) {
       //   return true
@@ -84,7 +85,7 @@ export default {
       // Show parent if there are no child router to display
       if (showingChildren.length === 0) {
         this.onlyOneChild = { ...parent, path: '', noShowingChildren: true }
-        console.log(this.onlyOneChild, parent)
+        // console.log(this.onlyOneChild, parent)
         return true
       }
       if (showingChildren.length === 1) {

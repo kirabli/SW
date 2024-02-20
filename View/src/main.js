@@ -7,6 +7,8 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import GlobalFun from '@/utils/GlobalFun.js'
 import '@/style/index.scss' // global css
+import installComponent from '@/utils/components.js'
+Vue.use(installComponent)
 Vue.use(ElementUI);
 Vue.use(GlobalFun);
 new Vue({

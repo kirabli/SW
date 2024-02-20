@@ -72,6 +72,9 @@ dotnet_naming_style.pascal_case.required_suffix =
 dotnet_naming_style.pascal_case.word_separator = 
 dotnet_naming_style.pascal_case.capitalization = pascal_case
 
+# CS0618: 类型或成员已过时
+dotnet_diagnostic.CS0618.severity = none
+
 [*.vb]
 #### 命名样式 ####
 

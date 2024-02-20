@@ -1,9 +1,8 @@
 <template>
   <div>
-    <sidebar class="sidebar-container" />
     <div class="main-container">
       <div>
-        <navbar />
+
       </div>
       <app-main />
     </div>
@@ -16,7 +15,7 @@ import Navbar from './components/Navbar.vue'
 import AppMain from './components/AppMain.vue'
 // import { Navbar, AppMain,Sidebar } from './components'
 export default {
-  name: 'Layout',
+  name: 'Display',
   components: {
     Navbar,
     AppMain,

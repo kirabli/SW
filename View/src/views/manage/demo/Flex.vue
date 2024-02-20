@@ -1,11 +1,5 @@
 <template>
   <div>
-    <div id='content'>
-      <p @click="changeTheme('')">default</p>
-      <p @click="changeTheme('theme1')">theme1</p>
-      <p @click="changeTheme('theme2')">theme2</p>
-      <p @click="changeTheme('theme3')">theme3</p>
-    </div>
     <!-- https://blog.csdn.net/grx1125/article/details/128785335?spm=1001.2101.3001.6650.6&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-128785335-blog-131802281.235%5Ev43%5Epc_blog_bottom_relevance_base3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-128785335-blog-131802281.235%5Ev43%5Epc_blog_bottom_relevance_base3&utm_relevant_index=13 -->
     <a target="_bank"
        href="https://blog.csdn.net/grx1125/article/details/128785335?spm=1001.2101.3001.6650.6&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-128785335-blog-131802281.235%5Ev43%5Epc_blog_bottom_relevance_base3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-128785335-blog-131802281.235%5Ev43%5Epc_blog_bottom_relevance_base3&utm_relevant_index=13">垂直居中</a>
@@ -37,15 +31,12 @@
 
 <script>
 export default {
-  name: 'Board',
+  name: 'Flex',
   components: {
   },
   computed: {
   },
   methods: {
-    changeTheme(theme) {
-      window.document.documentElement.setAttribute('data-theme', theme)
-    },
   }
 }
 
