@@ -13,7 +13,7 @@ function IsNull(value) {
 }
 
 const service = axios.create({
-	baseURL:process.env.VUE_APP_IP+':'+process.env.VUE_APP_Host
+	baseURL: process.env.NODE_ENV=='development'?(process.env.VUE_APP_IP+':'+process.env.VUE_APP_Host) :process.env.VUE_APP_IP
 })
 service.interceptors.request.use(
   config => {

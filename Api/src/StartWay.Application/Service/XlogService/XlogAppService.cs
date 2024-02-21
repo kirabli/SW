@@ -31,7 +31,7 @@ namespace StartWay.Service.XlogService
         }
         public async Task<PagedResultDto<XlogDto>> GetAllPage(PagedRequest input)
         {
-            var query = _repository.GetAll();
+            var query = _repository.GetAll().OrderByDescending(e=>e.CreationTime);
             var count = query.Count();
             var list = (await query.PageBy(input).ToListAsync()).MapTo<List<XlogDto>>();
             return new PagedResultDto<XlogDto>(count, list);

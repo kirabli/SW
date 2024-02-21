@@ -30,27 +30,32 @@ namespace StartWay.Web.Host.Startup
         private const string _apiVersion = "v1";
 
         private readonly IConfigurationRoot _appConfiguration;
-        private readonly IWebHostEnvironment _hostingEnvironment;
-
-        public Startup(IWebHostEnvironment env)
+        public IConfiguration Configuration { get; }
+        public Startup(IWebHostEnvironment env, IConfiguration configuration)
         {
-            _hostingEnvironment = env;
             _appConfiguration = env.GetAppConfiguration();
+            Configuration = configuration;
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             //MVC
             services.AddControllersWithViews(
-                options => { options.Filters.Add(new AbpAutoValidateAntiforgeryTokenAttribute()); }
+                options =>
+                {
+                    options.Filters.Add(new AbpAutoValidateAntiforgeryTokenAttribute());
+                }
             ).AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.ContractResolver = new AbpMvcContractResolver(IocManager.Instance)
                 {
                     NamingStrategy = new CamelCaseNamingStrategy()
                 };
+                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
             });
 
+
+            //读取配置文件
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
 
@@ -75,21 +80,48 @@ namespace StartWay.Web.Host.Startup
             );
 
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
-            ConfigureSwagger(services);
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc(_apiVersion, new OpenApiInfo
+                {
+                    Version = _apiVersion,
+                    Title = "StartWay API",
+                    Description = "StartWay",
+                    // uncomment if needed TermsOfService = new Uri("https://example.com/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "StartWay",
+                        Email = string.Empty,
+                        Url = new Uri("https://twitter.com/aspboilerplate"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "MIT License",
+                        Url = new Uri("https://github.com/aspnetboilerplate/aspnetboilerplate/blob/dev/LICENSE"),
+                    }
+                });
+                options.DocInclusionPredicate((docName, description) => true);
+
+                // Define the BearerAuth scheme that's in use
+                options.AddSecurityDefinition("bearerAuth", new OpenApiSecurityScheme()
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
+            });
 
             // Configure Abp and Dependency Injection
-            services.AddAbpWithoutCreatingServiceProvider<StartWayWebHostModule>(
+            return services.AddAbp<StartWayWebHostModule>(
                 // Configure Log4Net logging
                 options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
-                    f => f.UseAbpLog4Net().WithConfig(_hostingEnvironment.IsDevelopment()
-                        ? "log4net.config"
-                        : "log4net.Production.config"
-                    )
+                    f => f.UseAbpLog4Net().WithConfig("log4net.config")
                 )
             );
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
             app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
 
@@ -100,7 +132,7 @@ namespace StartWay.Web.Host.Startup
             app.UseRouting();
 
             app.UseAuthentication();
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseAbpRequestLocalization();
             

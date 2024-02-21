@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using StartWay.Configuration;
+using Abp.AspNetCore.Configuration;
 
 namespace StartWay.Web.Host.Startup
 {
@@ -22,6 +23,10 @@ namespace StartWay.Web.Host.Startup
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(StartWayWebHostModule).GetAssembly());
+        }
+        public override void PreInitialize()
+        {
+            Configuration.Modules.AbpAspNetCore().UseMvcDateTimeFormatForAppServices = true;
         }
     }
 }
