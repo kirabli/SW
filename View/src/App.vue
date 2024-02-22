@@ -1,37 +1,11 @@
 <template>
   <div id="app">
-    <router-view>
-
-    </router-view>
+    <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-  }
+  name: 'App'
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
-}
-* {
-  box-sizing: border-box;
-}
-.el-scrollbar {
-  height: 100%;
-}
-.el-scrollbar__wrap {
-  /* height: 100%; */
-  overflow: scroll;
-  overflow-x: auto;
-}
-</style>
