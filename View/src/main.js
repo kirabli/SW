@@ -19,7 +19,12 @@ import './permission' // permission control
 import './utils/error-log' // error log
 
 import * as filters from './filters' // global filters
-
+import installComponent from '@/utils/components.js'
+Vue.use(installComponent)
+import GlobalFun from '@/utils/GlobalFun.js'
+import GlobalApiFun from '@/utils/GlobalApiFun.js'
+Vue.use(GlobalFun)
+Vue.use(GlobalApiFun)
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api

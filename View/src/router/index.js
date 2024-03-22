@@ -4,8 +4,8 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 /* Layout */
-import Layout from '@/views/layout'
-
+import LayoutDisplay from '@/pages/layout'
+import LayoutManage from '@/views/layout'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -69,18 +69,38 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path: '/',
-    component: Layout,
-    redirect: '/dashboard',
+    path: '/dashboard',
+    component: LayoutManage,
+    redirect: '/dashboard/index',
     children: [
       {
-        path: 'dashboard',
+        path: 'index',
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
-        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+        meta: { title: 'Dashboard', icon: 'dashboard', type: 1, affix: true }
       }
     ]
   },
+  {
+    path: '/home',
+    component: LayoutDisplay,
+    redirect: '/home/index',
+    hidden: true,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/pages/home/index'),
+        name: 'Home',
+        meta: { title: 'Home', icon: 'dashboard', type: 0, affix: true }
+      }
+    ]
+  },
+  {
+    path: '/',
+    redirect: '/home',
+    hidden: true
+  }
+  // { path: '*', redirect: '/404', hidden: true }
   // {
   //   path: '/documentation',
   //   component: Layout,
@@ -122,38 +142,6 @@ export const constantRoutes = [
   // }
 ]
 
-/**
- * asyncRoutes
- * the routes that need to be dynamically loaded based on user roles
- */
-export const asyncRoutes = [
-  {
-    path: '/permission',
-    component: Layout,
-    // redirect: '/permission/page',
-    alwaysShow: true, // will always show the root menu
-    name: 'Permission',
-    alwaysShow: true,
-    meta: {
-      title: 'Permission',
-      icon: 'lock',
-      roles: ['Admin', 'editor'] // you can set roles in root nav
-    },
-    children: [
-      {
-        path: 'role',
-        component: () => import('@/views/permission/role'),
-        name: 'RolePermission',
-        meta: {
-          title: 'Role Permission',
-          roles: ['Admin']
-        }
-      }
-    ]
-  },
-  // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true, name: '*', }
-]
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support

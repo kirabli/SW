@@ -1,7 +1,7 @@
 <!-- https://vxetable.cn/v2/#/table/api  -->
 <template>
   <el-dialog :title="title" :visible.sync="visible" @close="close" :append-to-body="appendToBody" :lock-scroll="lockScroll"
-             :fullscreen="fullscreen">
+             :fullscreen="fullscreen" class="dialogDown">
     <slot />
   </el-dialog>
 </template>
@@ -66,11 +66,11 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-/deep/ .el-dialog__header {
+.dialogDown >>> .el-dialog__header {
   padding: 10px;
 }
 
-/deep/ .el-dialog__body {
+.dialogDown >>> .el-dialog__body {
   padding: 5px 15px;
 }
 </style>

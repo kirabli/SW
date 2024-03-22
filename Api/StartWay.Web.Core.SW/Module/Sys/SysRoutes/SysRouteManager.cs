@@ -81,7 +81,7 @@ namespace StartWay.Web.Core.SW.Module.Sys.SysRoutes
                 if (isHave < 1)
                 {
                     var message = ObjectMapper.Map<T>(i);
-                    message.Meta = new Meta { Title = i.Title, Icon = i.Icon,Roles =[.. i.Roles.Split(',')] };
+                    message.Meta = new Meta { Title = i.Title, Icon = i.Icon,Roles =[.. i.Roles.Split(',')],Type = i.Type };
                     nodeList.Add(message);
                 }
             }

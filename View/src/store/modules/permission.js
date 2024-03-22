@@ -19,22 +19,28 @@ function hasPermission(roles, route) {
 //   return module;
 // }
 function formatRoute(routes) {
-  var lazyLoading = (url) => Promise.resolve(require(`@/views/${url}.vue`))
+  // var lazyLoading = (url) => Promise.resolve(require(`@/views/${url}.vue`))
   let rous = []
   routes.forEach(row => {
     let rou = JSON.parse(JSON.stringify(row))
     if (rou.component == 'Layout') rou.component = Layout
+    // { path: '*', redirect: '/404', hidden: true }
     else {
       // console.log(dynamicImport)
       // rou.component = dynamicImport(row.component)
-      rou.component = (resolve) => require([`../../views/${row.component}.vue`], resolve)// lazyLoading(row.component)
+      if (row.type == 0) {
+        rou.component = (resolve) => require([`../../pages/${row.component}.vue`], resolve)// lazyLoading(row.component)
+      }
+      else {
+        rou.component = (resolve) => require([`../../views/${row.component}.vue`], resolve)// lazyLoading(row.component)
+      }
+
       //rou.component = require.ensure([], (resolve) => require(`../../views/${row.component}.vue`))
       // console.log(rou.component())
     }
     if (rou.children && rou.children.length > 0) rou.children = formatRoute(rou.children)
     rous.push(rou)
   })
-
   return rous
   // Routmessage.forEach(row => {
 
@@ -85,10 +91,8 @@ const actions = {
 
     return new Promise((resolve, reject) => {
       GetAllRoute().then(res => {
-        console.log('GetAllRoute', res)
-        let rou1 = formatRoute(res)
-        console.log('rou1', rou1)
-        let rou = filterAsyncRoutes(rou1, roles) || []
+        let rou = formatRoute(res)
+        rou = filterAsyncRoutes(rou, roles) || []
         commit('SET_ROUTES', rou)
         resolve(rou)
       }).catch(e => {

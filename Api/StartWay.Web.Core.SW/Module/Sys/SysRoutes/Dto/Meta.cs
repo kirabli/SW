@@ -12,6 +12,7 @@ namespace StartWay.Web.Core.SW.Module.Sys.SysRoutes.Dto
         public string Title { get; set; }
         //icon图标
         public string Icon { get; set; }
+        public int? Type { get; set; }
         public List<string> Roles { get; set; }
     }
 }

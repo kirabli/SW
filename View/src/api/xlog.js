@@ -1,4 +1,4 @@
-import {AxiosPost,AxiosGet} from '@/utils/axiosUtil.js'
+import { AxiosPost, AxiosGet } from '@/utils/axiosUtil.js'
 export async function GetAllListXlog(data) {
 	var entity = await AxiosGet('Xlog/GetAllPage', data)
 	return entity

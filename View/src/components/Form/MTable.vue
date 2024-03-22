@@ -33,7 +33,7 @@
 
     </div>
     <vxe-pager v-if="showPager" perfect :current-page.sync="page.currentPage" :page-size.sync="page.pageSize" :total="page.total"
-               :page-sizes="[10, 20, 50]" :layouts="layouts" @page-change="pageChange">
+               :page-sizes="[10, 20, 50]" :layouts="layouts" @page-change="pageChange" class="pageDown">
 
     </vxe-pager>
   </div>
@@ -286,14 +286,11 @@ export default {
 .autoHeight > .basetable {
   flex: 1;
 }
-/deep/ .vxe-pager {
+.pageDown >>> .vxe-pager {
   border: unset;
   background-color: unset;
 }
 .mtable {
   width: 100%;
-}
-.basetable {
-  // min-height: 200px;
 }
 </style>

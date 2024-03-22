@@ -8,7 +8,7 @@ const state = {
   avatar: '',
   introduction: '',
   roles: [],
-  userid:null
+  userid: null
 }
 
 const mutations = {
@@ -38,14 +38,14 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      login({ userNameOrEmailAddress: username.trim(), password: password,rememberClient:true }).then(response => {
+      login({ userNameOrEmailAddress: username.trim(), password: password, rememberClient: true }).then(response => {
         console.log(response)
-        const { accessToken,userId } = response.result
+        const { accessToken, userId } = response.result
         commit('SET_TOKEN', accessToken)
         setToken(accessToken)
         commit('SET_USERID', userId)
         setUserId(userId)
-    
+
         resolve()
       }).catch(error => {
         reject(error)
@@ -57,21 +57,21 @@ const actions = {
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       var userid = state.userid || getUserId()
-      getInfo({id:userid}).then(response => {
-          
+      getInfo({ id: userid }).then(response => {
+
         if (!response) {
           reject('Verification failed, please Login again.')
         }
-        const { roleNames, name, avatar, introduction } =  response
+        const { roleNames, name, avatar, introduction } = response
         // roles must be a non-empty array
-        if (!roleNames || !roleNames.length  ) {
+        if (!roleNames || !roleNames.length) {
           reject('getInfo: roles must be a non-null array!')
         }
         roleNames.forEach((r, index) => {
-        if (r == 'ADMIN' || r == 'admin') {
-          roleNames.splice(index, 1);
-          roleNames.unshift('Admin')
-        }
+          if (r == 'ADMIN' || r == 'admin') {
+            roleNames.splice(index, 1);
+            roleNames.unshift('Admin')
+          }
         })
         // const { roles, name, avatar, introduction } =  {avatar: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
         // introduction: "I am a super administrator",
@@ -97,7 +97,7 @@ const actions = {
       resetRouter()
       resolve()
     })
-   
+
   },
 
   // remove token

@@ -16,10 +16,11 @@ namespace StartWay.Web.Core.SW.Module.Sys.SysRoutes.Dto
         public string Title { get; set; }
         public string Component { get; set; }
         public string? Icon { get; set; }
-        public int Interparam { get; set; }
+        public int? Interparam { get; set; }
         public string? FatherNodeName { get; set; }
         public string? Remark { get; set; }
         public string? Roles { get; set; }
+        public int? Type { get; set; }
         public Meta Meta { get; set; }
         public List<ChildDto>? Children { get; set; } = [];
     }

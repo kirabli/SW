@@ -30,9 +30,11 @@ namespace StartWay.Web.Core.SW.Module.Sys.SysRoutes
         //排序id
         [MaxLength(200)]
         public string? Roles { get; set; }
-        public int Interparam { get; set; }
+        public int? Interparam { get; set; }
         //他的父节点的名字
         [MaxLength(200)]
         public string? FatherNodeName { get; set; }
+        // 0 UI端 1管理端
+        public int? Type { get; set; } = 0;
     }
 }

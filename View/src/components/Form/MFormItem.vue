@@ -1,7 +1,7 @@
 <template>
   <el-col :span="span">
     <el-form-item :label="label" :label-width="autoWidth" :prop="prop" :rules="autoRule">
-      <template slot="label" v-if="validatenull(label)" class="mlabel">
+      <template slot="label" v-if="getIsNull(label)" class="mlabel">
         <slot name="label"></slot>
       </template>
       <slot />
@@ -48,7 +48,7 @@ export default ({
   },
   computed: {
     autoWidth() {
-      return this.validatenull(this.label) ? this.customWidth : this.labelWidth
+      return this.getIsNull(this.label) ? this.customWidth : this.labelWidth
     },
     autoRule() {
       if (this.itemRule) return this.itemRule
