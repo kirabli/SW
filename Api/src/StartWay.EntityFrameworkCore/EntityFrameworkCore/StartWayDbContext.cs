@@ -4,7 +4,7 @@ using StartWay.Authorization.Roles;
 using StartWay.Authorization.Users;
 using StartWay.MultiTenancy;
 using StartWay.Module.Xlog;
-using StartWay.Web.Core.SW.Module.Sys.SysRoutes;
+using StartWay.Core.SW.Module.Sys.SysRoutes;
 
 namespace StartWay.EntityFrameworkCore
 {

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.Domain.Entities;
 
-namespace StartWay.Web.Core.SW.Module.Sys.SysRoutes
+namespace StartWay.Core.SW.Module.Sys.SysRoutes
 {
     public class SysRoute: Entity<int>
     {

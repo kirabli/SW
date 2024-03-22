@@ -12,7 +12,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\StartWay.Web.Core.SW\StartWay.Core.SW.csproj" />
+    <ProjectReference Include="..\StartWay.Core.SW\StartWay.Core.SW.csproj" />
     <ProjectReference Include="..\StartWay.Core\StartWay.Core.csproj" />
   </ItemGroup>
 </Project>

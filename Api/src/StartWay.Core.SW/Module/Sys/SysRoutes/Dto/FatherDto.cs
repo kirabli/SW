@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.AutoMapper;
 
-namespace StartWay.Web.Core.SW.Module.Sys.SysRoutes.Dto
+namespace StartWay.Core.SW.Module.Sys.SysRoutes.Dto
 {
     [AutoMap(typeof(SysRoute))]
     public class FatherDto : INodeDto

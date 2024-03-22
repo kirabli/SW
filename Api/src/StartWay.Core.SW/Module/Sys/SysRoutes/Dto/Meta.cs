@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StartWay.Web.Core.SW.Module.Sys.SysRoutes.Dto
+namespace StartWay.Core.SW.Module.Sys.SysRoutes.Dto
 {
     public class Meta
     {

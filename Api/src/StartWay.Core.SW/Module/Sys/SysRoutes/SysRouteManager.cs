@@ -3,13 +3,13 @@ using Abp.Dependency;
 using Abp.Domain.Repositories;
 using Abp.Domain.Services;
 using Abp.ObjectMapping;
-using StartWay.Web.Core.SW.Module.Sys.SysRoutes.Dto;
+using StartWay.Core.SW.Module.Sys.SysRoutes.Dto;
 using System.Linq.Dynamic.Core;
 using Microsoft.EntityFrameworkCore;
 using Abp.Linq.Extensions;
 using Abp.Collections.Extensions;
 
-namespace StartWay.Web.Core.SW.Module.Sys.SysRoutes
+namespace StartWay.Core.SW.Module.Sys.SysRoutes
 {
     public class SysRouteManager : ApplicationService, IDomainService
     {
