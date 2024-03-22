@@ -1,5 +1,7 @@
-import { asyncRoutes, constantRoutes } from '@/router'
-
+import router, { asyncRoutes, constantRoutes } from '@/router'
+import { GetAllRoute } from '@/api/sysRoute'
+// import lazyLoading from '@/utils/lazyLoading'
+import Layout from '@/views/layout/index.vue'
 /**
  * Use meta.role to determine if the current user has permission
  * @param roles
@@ -12,7 +14,39 @@ function hasPermission(roles, route) {
     return true
   }
 }
+// const dynamicImport = async (moduleName) => {
+//   const module = await import(`../../views/${moduleName}.vue`);
+//   return module;
+// }
+function formatRoute(routes) {
+  var lazyLoading = (url) => Promise.resolve(require(`@/views/${url}.vue`))
+  let rous = []
+  routes.forEach(row => {
+    let rou = JSON.parse(JSON.stringify(row))
+    if (rou.component == 'Layout') rou.component = Layout
+    else {
+      // console.log(dynamicImport)
+      // rou.component = dynamicImport(row.component)
+      rou.component = (resolve) => require([`../../views/${row.component}.vue`], resolve)// lazyLoading(row.component)
+      //rou.component = require.ensure([], (resolve) => require(`../../views/${row.component}.vue`))
+      // console.log(rou.component())
+    }
+    if (rou.children && rou.children.length > 0) rou.children = formatRoute(rou.children)
+    rous.push(rou)
+  })
 
+  return rous
+  // Routmessage.forEach(row => {
+
+  //   row.component = lazyLoading(row.component)
+  //   row.children.forEach(rowChildren => {
+  //     rowChildren.component = lazyLoading(rowChildren.component)
+  //   });
+
+  //   RoutList.push(row)
+  // });
+  return routes
+}
 /**
  * Filter asynchronous routing tables by recursion
  * @param routes asyncRoutes
@@ -48,15 +82,19 @@ const mutations = {
 
 const actions = {
   generateRoutes({ commit }, roles) {
-    return new Promise(resolve => {
-      let accessedRoutes
-      if (roles.includes('admin')) {
-        accessedRoutes = asyncRoutes || []
-      } else {
-        accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
-      }
-      commit('SET_ROUTES', accessedRoutes)
-      resolve(accessedRoutes)
+
+    return new Promise((resolve, reject) => {
+      GetAllRoute().then(res => {
+        console.log('GetAllRoute', res)
+        let rou1 = formatRoute(res)
+        console.log('rou1', rou1)
+        let rou = filterAsyncRoutes(rou1, roles) || []
+        commit('SET_ROUTES', rou)
+        resolve(rou)
+      }).catch(e => {
+        reject(e)
+      })
+
     })
   }
 }

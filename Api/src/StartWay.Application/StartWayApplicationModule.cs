@@ -6,7 +6,8 @@ using StartWay.Authorization;
 namespace StartWay
 {
     [DependsOn(
-        typeof(StartWayCoreModule), 
+        typeof(StartWayCoreModule),
+        typeof(StartWayCoreSWModule),
         typeof(AbpAutoMapperModule))]
     public class StartWayApplicationModule : AbpModule
     {

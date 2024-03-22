@@ -1,38 +1,19 @@
-import request from '@/utils/request'
+import {AxiosPost,AxiosGet,AxiosCommon} from '@/utils/axiosUtil.js'
 
-export function getRoutes() {
-  return request({
-    url: '/vue-element-admin/routes',
-    method: 'get'
-  })
+export async function GetRoles(data) {
+  var entity = await AxiosGet('Role/GetRoles', data)
+	return entity
 }
 
-export function getRoles() {
-  return request({
-    url: '/vue-element-admin/roles',
-    method: 'get'
-  })
+export async function addRole(data) {
+  var entity = await AxiosGet('Role/GetRoles', data)
+	return entity
 }
-
-export function addRole(data) {
-  return request({
-    url: '/vue-element-admin/role',
-    method: 'post',
-    data
-  })
+export async function updateRole(data) {
+  var entity = await AxiosGet('Role/GetRoles', data)
+	return entity
 }
-
-export function updateRole(id, data) {
-  return request({
-    url: `/vue-element-admin/role/${id}`,
-    method: 'put',
-    data
-  })
-}
-
-export function deleteRole(id) {
-  return request({
-    url: `/vue-element-admin/role/${id}`,
-    method: 'delete'
-  })
+export async function deleteRole(data) {
+  var entity = await AxiosGet('Role/GetRoles', data)
+	return entity
 }

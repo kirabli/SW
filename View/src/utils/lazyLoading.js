@@ -1,0 +1,1 @@
+export default (url) => () => { Promise.resolve(require(`../${url}.vue`)) }//Promise.resolve(require(`../${url}.vue`))

@@ -46,7 +46,7 @@ namespace StartWay.Web.Host.Startup
               {
                   // Configure the app here.
               })
-            .UseUrls("http://*:21021")
+            .UseUrls("http://*:44310")
              .UseStartup<Startup>();
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>

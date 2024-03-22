@@ -24,6 +24,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\StartWay.Web.Core.SW\StartWay.Core.SW.csproj" />
     <ProjectReference Include="..\StartWay.Core\StartWay.Core.csproj" />
   </ItemGroup>
 </Project>

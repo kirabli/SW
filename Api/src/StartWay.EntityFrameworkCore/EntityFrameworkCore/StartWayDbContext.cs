@@ -4,6 +4,7 @@ using StartWay.Authorization.Roles;
 using StartWay.Authorization.Users;
 using StartWay.MultiTenancy;
 using StartWay.Module.Xlog;
+using StartWay.Web.Core.SW.Module.Sys.SysRoutes;
 
 namespace StartWay.EntityFrameworkCore
 {
@@ -17,5 +18,6 @@ namespace StartWay.EntityFrameworkCore
 
         }
         public DbSet<Xlog> Xlogs { get; set; }
+        public DbSet<SysRoute> SysRoutes { get; set; }
     }
 }
